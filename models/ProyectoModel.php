@@ -1,5 +1,4 @@
 <?php
-require_once('../db/db_config.php');
 
 class ProyectoModel {
   private $conexion;
@@ -9,7 +8,7 @@ class ProyectoModel {
   }
 
   public function obtenerProyectos($usuario_id) {
-    $consulta = "SELECT * FROM proyectos WHERE usuario_id = ?";
+    $consulta = "SELECT * FROM proyecto WHERE usuario_id = ?";
     $sentencia = $this->conexion->prepare($consulta);
     $sentencia->bind_param("i", $usuario_id);
     $sentencia->execute();
@@ -23,7 +22,7 @@ class ProyectoModel {
 
   // Otros métodos relacionados con los proyectos
   public function cargarProyecto($nombre, $descripcion, $usuario_id) {
-    $consulta = "INSERT INTO proyectos (nombre, descripcion, usuario_id) VALUES (?, ?, ?)";
+    $consulta = "INSERT INTO proyecto (nombre, descripcion, usuario_id) VALUES (?, ?, ?)";
     $sentencia = $this->conexion->prepare($consulta);
     $sentencia->bind_param("ssi", $nombre, $descripcion, $usuario_id);
     $resultado = $sentencia->execute();

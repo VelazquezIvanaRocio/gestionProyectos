@@ -1,5 +1,4 @@
 <?php
-require_once('../db/db_config.php');
 
 class UsuarioModel {
   private $conexion;
@@ -57,7 +56,21 @@ class UsuarioModel {
     }
   }
 
+  public function obtenerNombreUsuario($usuario_id) {
+    $consulta = "SELECT nombre FROM usuario WHERE id = ?";
+    $sentencia = $this->conexion->prepare($consulta);
+    $sentencia->bind_param("i", $usuario_id);
+    $sentencia->execute();
+    $resultado = $sentencia->get_result();
+    $fila = $resultado->fetch_assoc();
+
+    $sentencia->close();
+
+    if ($fila) {
+      return $fila['nombre'];
+    } else {
+      return null;
+    }
+  }
   // Otros métodos relacionados con los usuarios
 }
-
-?>
