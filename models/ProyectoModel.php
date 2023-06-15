@@ -8,7 +8,10 @@ class ProyectoModel {
   }
 
   public function obtenerProyectos($usuario_id) {
-    $consulta = "SELECT * FROM proyecto WHERE usuario_id = ?";
+    $consulta = "SELECT proyecto.*
+    FROM proyecto
+    JOIN usuarios_compartidos ON proyecto.id_proyecto = usuarios_compartidos.proyecto_id
+    WHERE usuarios_compartidos.usuario_id = ?";
     $sentencia = $this->conexion->prepare($consulta);
     $sentencia->bind_param("i", $usuario_id);
     $sentencia->execute();
@@ -32,4 +35,3 @@ class ProyectoModel {
   }
   
 }
-?>

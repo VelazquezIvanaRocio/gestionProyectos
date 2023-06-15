@@ -16,7 +16,7 @@
       <?php if ($es_administrador == 1) : ?>
         <li class="nav-item"><a class="nav-link" href="../views/usuarios.php">Usuarios</a></li>
       <?php endif; ?>
-      <li class="nav-item"><a class="nav-link" href="../index.php">Proyectos</a></li><li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
+      <li class="nav-item"><a class="nav-link" href="../gestionProyectos/index.php">Proyectos</a></li><li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
     </ul>
   </nav>
 
