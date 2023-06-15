@@ -7,8 +7,9 @@
     <li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
   </ul>
 </nav>
+
 <div class="container">
-  <h1>Tareas del Proyecto</h1>
+  <h1 class="text-center">Tareas</h1>
   <table class="table">
     <thead>
       <tr>

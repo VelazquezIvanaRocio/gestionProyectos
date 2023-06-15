@@ -10,8 +10,8 @@ class ProyectoModel {
   public function obtenerProyectos($usuario_id) {
     $consulta = "SELECT proyecto.*
     FROM proyecto
-    JOIN usuarios_compartidos ON proyecto.id_proyecto = usuarios_compartidos.proyecto_id
-    WHERE usuarios_compartidos.usuario_id = ?";
+    JOIN usuarios_compartidos ON proyecto.id_proyecto = usuarios_compartidos.id_proyecto
+    WHERE usuarios_compartidos.id_usuario = ?";
     $sentencia = $this->conexion->prepare($consulta);
     $sentencia->bind_param("i", $usuario_id);
     $sentencia->execute();
@@ -21,6 +21,20 @@ class ProyectoModel {
     $sentencia->close();
 
     return $proyectos;
+  }
+
+  public function obtenerTodosLosProyectos(){
+    $consulta = "SELECT proyecto.*
+    FROM proyecto";
+    $sentencia = $this->conexion->prepare($consulta);
+    $sentencia->execute();
+    $resultado = $sentencia->get_result();
+    $proyectos = $resultado->fetch_all(MYSQLI_ASSOC);
+
+    $sentencia->close();
+
+    return $proyectos;
+
   }
 
   // Otros métodos relacionados con los proyectos

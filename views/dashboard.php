@@ -6,7 +6,12 @@
   $usuarioModel = new UsuarioModel();
   $proyecto = new ProyectoModel();
   $es_administrador = $usuarioModel->obtenerEsAdministrador($_SESSION['usuario_id']);
-  $proyectos = $proyecto->obtenerProyectos($_SESSION['usuario_id']);
+  if($es_administrador==1){
+    $proyectos = $proyecto->obtenerTodosLosProyectos();
+  }else{
+    $proyectos = $proyecto->obtenerProyectos($_SESSION['usuario_id']);
+  }
+  
   $nombreUsuario = $usuarioModel->obtenerNombreUsuario($_SESSION['usuario_id']);
 
   ?>
@@ -14,15 +19,16 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav">
       <?php if ($es_administrador == 1) : ?>
-        <li class="nav-item"><a class="nav-link" href="../views/usuarios.php">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link" href="../gestionProyectos/views/usuarios.php">Usuarios</a></li>
       <?php endif; ?>
-      <li class="nav-item"><a class="nav-link" href="../gestionProyectos/index.php">Proyectos</a></li><li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
+      <li class="nav-item"><a class="nav-link" href="../gestionProyectos/index.php">Proyectos</a></li>
+      <li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
     </ul>
   </nav>
 
-  <h1>Bienvenido <?php echo $nombreUsuario ?></h1>
+  <h1 class="text-center">Bienvenido <?php echo $nombreUsuario ?></h1>
 
-  <h2 class="justify-content-center">Tus proyectos</h2>
+  <h2 class="justify-content-center">Proyectos</h2>
   <table class="table">
     <thead>
       <tr>
@@ -45,5 +51,4 @@
       <?php endforeach; ?>
     </tbody>
   </table>
-  <a href="../views/proyectos.php">Ver todos los proyectos</a>
 </div>
