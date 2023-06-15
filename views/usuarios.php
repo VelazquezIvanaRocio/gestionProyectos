@@ -3,7 +3,8 @@
 <?php
 require_once('db/db_config.php');
 require_once('models/UsuarioModel.php');
-$usuario = new UsuarioModel();
+$usuarioModel = new UsuarioModel();
+$usuario= $usuarioModel->obtenerUsuarios($usuarios);
 ?>
 
 
@@ -33,5 +34,5 @@ $usuario = new UsuarioModel();
             <?php endforeach; ?>
         </tbody>
     </table>
-</div>
+</div> -->
 <?php include_once 'footer.php'; ?>

@@ -19,7 +19,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav">
       <?php if ($es_administrador == 1) : ?>
-        <li class="nav-item"><a class="nav-link" href="../gestionProyectos/views/usuarios.php">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/UsuariosController.php">Usuarios</a></li>
       <?php endif; ?>
       <li class="nav-item"><a class="nav-link" href="../gestionProyectos/index.php">Proyectos</a></li>
       <li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
