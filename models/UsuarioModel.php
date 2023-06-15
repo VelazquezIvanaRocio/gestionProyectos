@@ -73,10 +73,9 @@ class UsuarioModel {
     }
   }
 
-  public function obtenerUsuarios($usuario_id) {
-    $consulta = "SELECT * FROM usuario WHERE id = ?";
+  public function obtenerUsuarios() {
+    $consulta = "SELECT * FROM usuario";
     $sentencia = $this->conexion->prepare($consulta);
-    $sentencia->bind_param("i", $usuario_id);
     $sentencia->execute();
     $resultado = $sentencia->get_result();
     $fila = $resultado->fetch_all(MYSQLI_ASSOC);

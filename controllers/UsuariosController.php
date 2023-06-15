@@ -1,8 +1,13 @@
 <?php
-session_start();
+require_once('../db/db_config.php');
+require_once('../models/UsuarioModel.php');
 
-if (isset($_SESSION['usuario_id'])) {
-  header("Location: ../views/usuarios.php");
-  exit();
-}
+// Crear una instancia del modelo de Usuario
+$usuarioModel = new UsuarioModel();
+
+// Obtener los usuarios
+$usuarios = $usuarioModel->obtenerUsuarios();
+
+// Incluir la vista de usuarios
+include_once('../views/usuarios.php');
 ?>
