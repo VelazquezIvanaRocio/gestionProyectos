@@ -1,6 +1,6 @@
 <?php include_once 'cabecera.php'; ?>
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="../index.php">Proyectos</a></li>
       <li class="nav-item"><a class="nav-link" href="/gestionProyectos/controllers/salir.php">Cerrar sesión</a></li>
